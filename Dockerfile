@@ -11,7 +11,7 @@ RUN \
   nano curl git autotools-dev debhelper dh-systemd libexpat-dev libgd-dev \
   libgeoip-dev libluajit-5.1-dev liblua5.1-0-dev libmhash-dev libpam0g-dev \
   libperl-dev libxslt1-dev po-debconf libssl-dev python init-system-helpers -yqq && \
-  rm -rf * ; nginx -c /etc/nginx/nginx.conf && \
+  rm -rf ngi* && \
 
   echo "Build..." && \
   curl http://repo.linuxiarz.pl/NGINX-1.10.1-custom.tar.gz | tar xz && \
