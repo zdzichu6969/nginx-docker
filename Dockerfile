@@ -17,6 +17,7 @@ RUN \
   curl http://repo.linuxiarz.pl/NGINX-1.10.1-custom.tar.gz | tar xz && \
   cd nginx*; dpkg-buildpackage -b >> /dev/null && \
   cd .. ; dpkg -i nginx-common_1.*.deb nginx_1.*.deb nginx-extras_1.*.deb nginx-doc_1.*.deb && \
+  echo "daemon off;" >> /etc/nginx/nginx.conf && \
 
   chown -R www-data:www-data /var/www/html
 
