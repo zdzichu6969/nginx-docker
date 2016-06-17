@@ -1,24 +1,21 @@
-#
-# Nginx Dockerfile
-#
-# https://github.com/dockerfile/nginx
-#
-
 # Pull base image.
 FROM debian:jessie
 
 # Install Nginx.
 RUN \
-  apt update -y && \
+  echo "System update..." && \
+  apt update -yqq && \
+  echo "Dependencies install" && \
   apt-get install dpkg-dev build-essential zlib1g-dev \
   libpcre3 libpcre3-dev unzip curl libcurl4-openssl-dev libossp-uuid-dev \
   nano curl git autotools-dev debhelper dh-systemd libexpat-dev libgd-dev \
   libgeoip-dev libluajit-5.1-dev liblua5.1-0-dev libmhash-dev libpam0g-dev \
-  libperl-dev libxslt1-dev po-debconf libssl-dev -y && \
+  libperl-dev libxslt1-dev po-debconf libssl-dev python init-system-helpers -yqq && \
 
-curl http://repo.linuxiarz.pl/NGINX-1.10.1-custom.tar.gz | tar xz && \
-cd nginx*; dpkg-buildpackage -b&& \
-cd .. ; dpkg -i nginx-common_1.*.deb nginx_1.*.deb nginx-extras_1.*.deb nginx-doc_1.*.deb && \
+  echo "Build..." && \
+  curl http://repo.linuxiarz.pl/NGINX-1.10.1-custom.tar.gz | tar xz && \
+  cd nginx*; dpkg-buildpackage -b && \
+  cd .. ; dpkg -i nginx-common_1.*.deb nginx_1.*.deb nginx-extras_1.*.deb nginx-doc_1.*.deb && \
 
   chown -R www-data:www-data /var/www/html
 
