@@ -4,7 +4,7 @@ FROM debian:jessie
 # Install Nginx.
 RUN \
   echo "System update..." && \
-  apt update -yqqq: && \
+  apt-get update -yqqq && \
   echo "Dependencies install" && \
   apt-get install dpkg-dev build-essential zlib1g-dev \
   libpcre3 libpcre3-dev unzip curl libcurl4-openssl-dev libossp-uuid-dev \
