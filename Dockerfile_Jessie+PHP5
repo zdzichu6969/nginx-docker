@@ -3,6 +3,7 @@ FROM debian:jessie
 
 # Install Nginx.
 RUN \
+  echo "export TERM=xterm" >> /etc/bash.bashrc  && \
   echo "System update..." && \
   apt-get update -yqqq && \
   echo "Dependencies install" && \
