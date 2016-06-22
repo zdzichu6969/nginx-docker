@@ -23,14 +23,11 @@ RUN \
   chown -R www-data:www-data /var/www/html && \
 
 #PHP
- apt-get install php5-fpm -yqqq && \
+ apt-get install php5-fpm htop -yqqq && \
  service php5-fpm start >> /dev/null && \
  cd /usr/share/nginx/html/ && git clone https://github.com/phpsysinfo/phpsysinfo.git && \
  mv phpsysinfo/phpsysinfo.ini* phpsysinfo/phpsysinfo.ini && \
- service php5-fpm start && \
-
-#HTOP
- apt-get install htop -yqqq
+ service php5-fpm start
 
 
 # Define mountable directories.
